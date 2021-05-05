@@ -1,23 +1,16 @@
-import logo from './logo.svg';
+import { useStoreState } from 'easy-peasy';
 import './App.css';
+import { ListaProdutos } from './components/ListaProdutos';
 
 function App() {
+  const basketProductIds = useStoreState(state => state.basket.productIds);
+  const allProducts = useStoreState(state => state.products.items);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Todos os Produtos</h1>
+      <ListaProdutos productIds={Object.keys(allProducts)} />
+      <h1>Itens na sacola</h1>
+      <ListaProdutos productIds={basketProductIds} hideButton={true} />
     </div>
   );
 }

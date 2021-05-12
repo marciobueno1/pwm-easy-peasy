@@ -1,23 +1,7 @@
-import { action } from 'easy-peasy';
+import { basketModel } from './basketModel';
+import { productsModel } from './productsModel';
 
-const productsModel = {
-    items: {
-        1: { id: 1, name: 'Peas', price: 10 },
-        2: { id: 2, name: 'Beans', price: 20 },
-        3: { id: 3, name: 'Rice', price: 15 },
-    }
-};
-
-const basketModel = {
-    productIds: [1],
-    addProduct: action((state, payload) => {
-        state.productIds.push(payload);
-    }),
-};
-
-const storeModel = {
+export const storeModel = {
     products: productsModel,
-    basket: basketModel
+    basket: basketModel,
 };
-
-export default storeModel;
